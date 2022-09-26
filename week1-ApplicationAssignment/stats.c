@@ -27,7 +27,6 @@
  */
 
 
-
 #include <stdio.h>
 #include <stdint.h>
 #include "stats.h"
@@ -44,23 +43,86 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
-
+  uint8_t test_size = sizeof(test)/sizeof(test[0]);
+  printf("Test array:\n");
+  print_array(test, test_size);
+  
+  printf("\nArray statistics:\n");
+  print_statistics(test, test_size);
+  
 }
 
 /* Add other Implementation File Code Here */
 
-void print_statistics(uint8_t * arr, uint8_t arr_size);
+void print_statistics(uint8_t * arr, uint8_t arr_size)
+{
+  printf("Minimum: %d\n", find_minimum(arr, arr_size));
+  printf("Maximum: %d\n", find_maximum(arr, arr_size));
+  printf("Mean:    %d\n", find_mean(arr, arr_size));
+  printf("Median:  %d\n", find_median(arr, arr_size));
+}
 
-void print_array(uint8_t * arr, uint8_t arr_size);
+void print_array(uint8_t * arr, uint8_t arr_size)
+{
+  printf("{");
+  for (uint8_t i = 0; i < arr_size; i++)
+    printf("%d, ",arr[i]);
+  printf("\b\b}\n");
+}
 
-uint8_t find_median(uint8_t * arr, uint8_t arr_size);
+uint8_t find_median(uint8_t * arr, uint8_t arr_size)
+{
+  uint8_t arr_sort[arr_size];
+  uint8_t median;
+  /* create sorted copy to avoid modifying arr */
+  for (uint8_t i = 0; i < arr_size; i++)
+    arr_sort[i] = arr[i];
+  sort_array(arr_sort, arr_size);
+  median = arr_sort[arr_size/2];
+  return median;
+  }
 
-uint8_t find_mean(uint8_t * arr, uint8_t arr_size);
+uint8_t find_mean(uint8_t * arr, uint8_t arr_size)
+{
+  float mean = 0.0;
+  for(uint8_t i = 0; i < arr_size; i++)
+    mean += arr[i] / arr_size;
+  return (uint8_t) mean;
+}
 
-uint8_t find_maximum(uint8_t * arr, uint8_t arr_size);
+uint8_t find_maximum(uint8_t * arr, uint8_t arr_size)
+{
+  uint8_t max = 0;
+  for(uint8_t i = 0; i < arr_size; i++)
+    max = (arr[i] > max)? arr[i] : max;
+  return max;
+}
 
-uint8_t find_minimum(uint8_t * arr, uint8_t arr_size);
+uint8_t find_minimum(uint8_t * arr, uint8_t arr_size)
+{
+  uint8_t min = 255;
+  for(uint8_t i = 0; i < arr_size; i++)
+    min = (arr[i] < min)? arr[i] : min;
+  return min;
+}
 
-uint8_t sort_array(uint8_t * arr, uint8_t arr_size);
+void sort_array(uint8_t * arr, uint8_t arr_size)
+{
+  uint8_t arr_sort[arr_size];
+  uint8_t max;
+  for(uint8_t i = 0; i < arr_size; i++)
+  {
+    max = find_maximum(arr, arr_size);
+    arr_sort[i] = max;
+    /* erase max value from arr */
+    for(uint8_t j = 0; i < arr_size; j++)
+      if (arr[j] == max)
+      {
+        arr[j] = 0;
+        break;
+      }
+  }
+  /* copy sorted array */
+  for (uint8_t i = 0; i < arr_size; i++)
+    arr[i] = arr_sort[i];
+}

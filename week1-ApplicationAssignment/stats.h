@@ -82,7 +82,7 @@ uint8_t find_mean(uint8_t * arr, uint8_t arr_size);
  * @param[in] arr the input array.
  * @param[in] arr_size the size of the array.
  *
- * @return maximum the maximum of the array.
+ * @return max the maximum of the array.
  */
 uint8_t find_maximum(uint8_t * arr, uint8_t arr_size);
 
@@ -94,7 +94,7 @@ uint8_t find_maximum(uint8_t * arr, uint8_t arr_size);
  * @param[in] arr the input array.
  * @param[in] arr_size the size of the array.
  *
- * @return minimum the minimum of the array.
+ * @return min the minimum of the array.
  */
 uint8_t find_minimum(uint8_t * arr, uint8_t arr_size);
 
@@ -103,12 +103,10 @@ uint8_t find_minimum(uint8_t * arr, uint8_t arr_size);
  *
  * Given an array of data and a length, sorts the array from largest to smallest.
  *
- * @param[in/out] arr the input array.
+ * @param[in/out] arr the array to be sorted.
  * @param[in] arr_size the size of the array.
- *
- * @return sort the median of the array.
  */
-uint8_t sort_array(uint8_t * arr, uint8_t arr_size);
+void sort_array(uint8_t * arr, uint8_t arr_size);
 
 
 #endif /* __STATS_H__ */
