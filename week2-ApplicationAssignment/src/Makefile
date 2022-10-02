@@ -74,10 +74,10 @@ endif
 
 # Compile all object files, but DO NOT link.
 .PHONY: compile-all
-compile-all: $(TARGET).out
+compile-all: $(TARGET).c
 
-$(TARGET).out: $(OBJS)
-	$(CC) $(OBJS) $(INCLUDES) $(CPPFLAGs) $(CFLAGS) $(LDFLAGS) -c $@
+$(TARGET).c: $(OBJS)
+	$(CC) $(INCLUDES) $(CPPFLAGs) $(CFLAGS) -c $(SOURCES)
 
 # Compile all object files and link into a final executable
 .PHONY: build
