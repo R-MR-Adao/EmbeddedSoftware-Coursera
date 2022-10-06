@@ -10,7 +10,7 @@
 #*****************************************************************************
 
 #*****************************************************************************
-# Compile Coursera m2 assignment project
+# Compile Coursera m4 final assessment
 #
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
 #
@@ -24,18 +24,25 @@
 #			 Default: HOST
 #
 # author: Ricardo Adao
-# date: 2022-10-01
+# date: 2022-10-06
 #*****************************************************************************
 include platform.mk
 include sources.mk
 
 # Architecture Independent Flags
-TARGET = c1m2
+TARGET = c1m4
 ASMS = $(SOURCES:.c=.asm)
 PPCS = $(SOURCES:.c=.i)
 OBJS = $(SOURCES:.c=.o)
+
+# Optional pre-compiler flags
+OPTFLAGS = -DVERBOSE -DCOURSE1
+
+# Compiler flags common to both platforms
 CFLAGS_COMMON = -std=c99 -Wall -Werror -g -O0
-CPPFLAGs = -D$(PLATFORM)
+
+# Pre-compiler flags
+CPPFLAGs = -D$(PLATFORM) $(OPTFLAGS)
 
 ifeq ($(PLATFORM),HOST)
 # Compiler Flags and Defines

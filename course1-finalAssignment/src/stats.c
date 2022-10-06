@@ -44,10 +44,10 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   uint8_t test_size = sizeof(test)/sizeof(test[0]);
-  printf("Test array:\n");
+  PRINTF("Test array:\n");
   print_array(test, test_size);
   
-  printf("\nArray statistics:\n");
+  PRINTF("\nArray statistics:\n");
   print_statistics(test, test_size);
   
 }
@@ -56,18 +56,20 @@ void main() {
 
 void print_statistics(uint8_t * arr, uint8_t arr_size)
 {
-  printf("Minimum: %d\n", find_minimum(arr, arr_size));
-  printf("Maximum: %d\n", find_maximum(arr, arr_size));
-  printf("Mean:    %d\n", find_mean(arr, arr_size));
-  printf("Median:  %d\n", find_median(arr, arr_size));
+  PRINTF("Minimum: %d\n", find_minimum(arr, arr_size));
+  PRINTF("Maximum: %d\n", find_maximum(arr, arr_size));
+  PRINTF("Mean:    %d\n", find_mean(arr, arr_size));
+  PRINTF("Median:  %d\n", find_median(arr, arr_size));
 }
 
 void print_array(uint8_t * arr, uint8_t arr_size)
 {
-  printf("{");
+#ifdef VERBOSE  
+  PRINTF("{");
   for (uint8_t i = 0; i < arr_size; i++)
-    printf("%d, ",arr[i]);
-  printf("\b\b}\n");
+    PRINTF("%d, ",arr[i]);
+  PRINTF("\b\b}\n");
+#endif
 }
 
 uint8_t find_median(uint8_t * arr, uint8_t arr_size)
