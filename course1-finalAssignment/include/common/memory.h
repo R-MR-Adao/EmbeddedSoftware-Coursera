@@ -90,4 +90,94 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+/**
+ * @brief Move source location to new memory address
+ *
+ * This function takes two byte pointers (one source and one destination) and
+ * a length of bytes to move from the source location to the destination.
+ *
+ * @param src Pointer to source memory location
+ * @param dst Pointer to destination memory location
+ * @param length Length of bytes to move from the source to destination
+ *
+ * @return dst Pointer to destination location
+ */
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Copy data from source location to new memory address
+ *
+ * This function takes two byte pointers (one source and one destination) and
+*  a length of bytes to copy from the source location to the destination.
+ *
+ * @param src Pointer to source memory location
+ * @param dst Pointer to destination memory location
+ * @param length Length of bytes to copy from the source to destination
+ *
+ * @return dst Pointer to destination location
+ */
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @brief Set all memory bytes to a given input value
+ *
+ * This functon takes a pointer to a source memory location, a length in bytes
+ * and sets all locations of that memory to a given value.
+ *
+ * @param src Pointer to source memory location
+ * @param length Length of bytes to modify the source to destination
+ * @param value Value to be assigned
+ *
+ * @return src Pointer to source location
+ */
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @brief Set all memory bytes to zero
+ *
+ * This function takes a pointer to a source memory location, a length in bytes
+ * and sets all locations of that memory to zero.
+ *
+ * @param src Pointer to source memory location
+ * @param length Length of bytes to modify from the source to destination
+ *
+ * @return src Pointer to source location
+ */
+uint8_t * my_memzero(uint8_t * src, size_t length);
+
+/**
+ * @brief Reverse the orther of bytes in a given memory location
+ *
+ * This function takes a pointer to a memory location and a length in bytes and
+ * reverses the order of all of the bytes.
+ *
+ * @param src Pointer to source memory location
+ * @param length Length of bytes to modify from the source to destination
+ *
+ * @return src Pointer to source location
+ */
+uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @brief Allocate memory on the heap for new words
+ *
+ * This function takes a number of words to allocate in dynamic memory.
+ *
+ * @param length Length of bytes to modify from the source to destination
+ *
+ * @return src Pointer to source location
+ */
+int32_t * reserve_words(size_t length);
+
+/**
+ * @brief Free memory from the heap
+ *
+ * This function frees a dynamic memory allocation on a given memory location
+ *
+ * @param length Length of bytes to modify from the source to destination
+ *
+ * @return src Pointer to source location
+ */
+void free_words(int32_t * src);
+
 #endif /* __MEMORY_H__ */
